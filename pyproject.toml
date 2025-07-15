@@ -1,0 +1,23 @@
+[project]
+name = "comprehensive_crew_automation_for_equity_trading_platform"
+version = "0.1.0"
+description = "comprehensive_crew_automation_for_equity_trading_platform using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.119.0,<1.0.0"
+]
+
+[project.scripts]
+comprehensive_crew_automation_for_equity_trading_platform = "comprehensive_crew_automation_for_equity_trading_platform.main:run"
+run_crew = "comprehensive_crew_automation_for_equity_trading_platform.main:run"
+train = "comprehensive_crew_automation_for_equity_trading_platform.main:train"
+replay = "comprehensive_crew_automation_for_equity_trading_platform.main:replay"
+test = "comprehensive_crew_automation_for_equity_trading_platform.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

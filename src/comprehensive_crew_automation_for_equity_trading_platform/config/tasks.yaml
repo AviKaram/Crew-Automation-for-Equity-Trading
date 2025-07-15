@@ -1,0 +1,39 @@
+---
+fetch_market_prices:
+  description: Retrieve intraday and end-of-day prices, including dividends and corporate
+    actions, from the market data feed URL.
+  expected_output: A dataset containing the latest market prices, dividends, and corporate
+    actions.
+  async_execution: false
+  agent: price_feed_sub_agent
+retrieve_financial_fundamentals:
+  description: Access quarterly and annual financials, along with consensus forecasts,
+    from the fundamental data feed URL.
+  expected_output: A comprehensive dataset of financial fundamentals and forecasts.
+  async_execution: false
+  agent: fundamentals_sub_agent
+map_sector_classifications:
+  description: Use the sector classification data URL to map tickers to their respective
+    GICS sectors and industries.
+  expected_output: A mapping of tickers to GICS sectors and industries.
+  async_execution: false
+  agent: sector_taxonomy_sub_agent
+track_news_and_events:
+  description: Monitor earnings dates, rating changes, and regulatory filings from
+    the news and events data feed URL.
+  expected_output: A report of upcoming earnings dates, rating changes, and regulatory
+    filings.
+  async_execution: false
+  agent: news_event_sub_agent
+store_data_in_database:
+  description: Use PGSearchTool to store and query the retrieved data efficiently
+    in a PostgreSQL database.
+  expected_output: All retrieved data is stored in a PostgreSQL database, ready for
+    analysis.
+  async_execution: false
+  agent: data_ingestion_agent
+  context:
+  - fetch_market_prices
+  - retrieve_financial_fundamentals
+  - map_sector_classifications
+  - track_news_and_events
